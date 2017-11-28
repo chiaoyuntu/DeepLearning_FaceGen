@@ -67,7 +67,7 @@ In this DCGAN model, the discriminator uses 3 convolution layer with leaky relu 
 #### Architecture
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-1.png" width="80%" height="80%">
 | Parameter               | Value            |
-|-------------------------|------------------|
+| ----------------------- | ---------------- |
 | Layers in discriminator | 3 conv + 1 fc    |
 | Layers in generator     | 1 fc + 3 deconv  |
 | generator input dim     | 100 + 1          |
@@ -82,9 +82,9 @@ In this DCGAN model, the discriminator uses 3 convolution layer with leaky relu 
 
 - Result
 face + loss + discriminator detailed prob <br />
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-2.png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-3.png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-4.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-2.png" width="50%" height="50%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-3.png" width="50%" height="50%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-4.png" width="50%" height="50%">
 
 
 
