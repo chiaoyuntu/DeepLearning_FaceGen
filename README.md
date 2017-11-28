@@ -7,10 +7,10 @@ Normally humans do not memorize things in pixel-level. Instead, it is much easie
 
 ## Problem Formulation
 Given the input of different attributes, we produce an output image corresponding to those facial attributes. Our dataset has about 40 attributes which includes basics like Male, Female. Facial characteristics like, arched eyebrows, high cheekbones, bags under eyes, big nose, black hair, blond hair etc and also cosmetic attributes like eyeglasses, goatee, heavy makeup, wearing hat etc. Here 1 indicates the presence of a certain feature and -1 indicates the absence as the table shown in figure 1(a). In the future, we want to be able to allow users to interactively refine the first guess by providing the improved attributes. As you can see in figure 1(b).
-### figure 1(a) Model for Facial Image Generation
+#### figure 1(a) Model for Facial Image Generation
 <img alt="face generate" src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/problem_formulation/problem_formulation_1.png" width="70%" height="70%">
 
-### figure 1(b) Model for Interactive Refinement
+#### figure 1(b) Model for Interactive Refinement
 <img alt="face refine" src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/problem_formulation/problem_formulation_2.png" width="70%" height="70%">
 
 
@@ -31,7 +31,10 @@ We analyzed the 40 attributes showed as figure 4 to find the non sparse attribut
 In the baseline model, we use 2 layer Fully-Connected Network for both generator and discriminator as in figure 6. The input of generator is a noise vector of size 100 concatenated with the attribute vector of size 23. We used 178 × 218 × 3 flattened image (without cropping) with 23 attributes vector as the input of discriminator. The parameter setting is showed in table 1.
 
 #### Result
+##### Output images with Female attribute
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/fcgan1.png" width="80%" height="80%">
+
+##### Output images with Male attribute
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/fcgan2.png" width="80%" height="80%">
 The generated female face image is shown in figure 7 and male image shown in figure 8. Although the face images do not look great and are blurred, we can still recognize the face is female or male with attributes given.
 
@@ -67,9 +70,10 @@ Next, we will going to introduce our five face generation DCGAN model. In each m
 ### DCGAN 1 
 In this DCGAN model, the discriminator uses 3 convolution layer with leaky relu activation and finally a fully connected layer. The generator is almost the exact opposite. Moreover, the attributes are given to the discriminator at the last fully connected layer.
 
-#### Architecture
+#### Architecture Figure
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-1.png" width="80%" height="80%">
 
+#### Architecture/Hyperparameter Setup
 | Parameter               | Value            |
 | ----------------------- | ---------------- |
 | Layers in discriminator | 3 conv + 1 fc    |
@@ -93,11 +97,19 @@ In this DCGAN model, the discriminator uses 3 convolution layer with leaky relu 
 The output image doesn’t show the male attribute we give. Perhaps because there is a considerable disparity in the ratio of number for attribute (1) and flattened image (2048). To improve the model, we adopt the architecture shown below that the attributes are given as a cube concatenated with the generated image to discriminator.
 
 ### DCGAN 2 with 32 * 32 image-size
-#### Architecture
+#### Architecture Figure
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-1(32_32).png" width="80%" height="80%">
+
+##### Generator
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-2(32_32).png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-3(32_32).png" width="80%" height="80%">
+
+##### Descriminator with 3 conv layers
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-4(32_32).png" width="80%" height="80%">
+
+##### Descriminator with 4 conv layers
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-3(32_32).png" width="80%" height="80%">
+
+#### Architecture/Hyperparameter Setup
 
 | Parameter               | Value                   |
 |-------------------------|-------------------------|
