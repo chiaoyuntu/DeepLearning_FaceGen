@@ -8,7 +8,9 @@ Normally humans do not memorize things in pixel-level. Instead, it is much easie
 ## Problem Formulation
 Given the input of different attributes, we produce an output image corresponding to those facial attributes. Our dataset has about 40 attributes which includes basics like Male, Female. Facial characteristics like, arched eyebrows, high cheekbones, bags under eyes, big nose, black hair, blond hair etc and also cosmetic attributes like eyeglasses, goatee, heavy makeup, wearing hat etc. Here 1 indicates the presence of a certain feature and -1 indicates the absence as the table shown in figure 1(a). In the future, we want to be able to allow users to interactively refine the first guess by providing the improved attributes. As you can see in figure 1(b).
 <img alt="face generate" src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/problem_formulation/problem_formulation_1.png" width="70%" height="70%">
+		figure 1(a)
 <img alt="face refine" src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/problem_formulation/problem_formulation_2.png" width="70%" height="70%">
+		figure 1(b)
 
 ## Dataset
 CelebFaces Attributes Dataset (CelebA) [2] is a large- scale face attributes dataset with more than 200K celebrity images showed as figure 3, each with 40 attribute annotations. The images in this dataset cover large pose variations and background clutter. CelebA has large diversities, large quantities, and rich annotations, including 10,177 number of identities, 202,599 number of face images, and 5 landmark locations, 40 binary attributes annotations per image. 
@@ -49,20 +51,40 @@ Compared to the DCGAN model [3] proposed by Radford et al. For the discriminator
 
 - DCGAN model 1, 2, 3:
 ```
-G_loss = cross_entropy(D_fake, ones)
+	G_loss = cross_entropy(D_fake, ones)
 ```
 
 - DCGAN model 4, 5:
 ```
-G_loss = cross_entropy(D_fake, ones) + Recon_loss
+	G_loss = cross_entropy(D_fake, ones) + Recon_loss
 ```
 Compared to the DCGAN model [3] proposed by Radford et al. For the generator optimization problem, besides the cross entropy loss passing from the discriminator, we also add a reconstruction loss between input image and generated image for model 4,5 in order to interactively refine the attributes based on input images. <br />
 Next, we will going to introduce our five face generation DCGAN model. In each model, we will illustrate the architecture, hyperparameter settings, loss curves with respect to generators and discriminators, output values of discriminators, generated images.
 
-#### DCGAN 1 
+### DCGAN 1 
+(G: input noise vector + attr vector, D: input image + attr vector)  -> small attr info (compared to flattened image) in D <br />
+In this DCGAN model, the discriminator uses 3 convolution layer with leaky relu activation and finally a fully connected layer. The generator is almost the exact opposite. Moreover, the attributes are given to the discriminator at the last fully connected layer.
+#### Architecture
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-1.png" width="80%" height="80%">
+| Parameter               | Value            |
+|-------------------------|------------------|
+| Layers in discriminator | 3 conv + 1 fc    |
+| Layers in generator     | 1 fc + 3 deconv  |
+| generator input dim     | 100 + 1          |
+| discriminator input dim | 32 * 32 * 3      |
+| Batch size              | 32               |
+| Noise vector size       | 10               |
+| Attribute size          | 1                |
+| Number of Images        | 50000            |
+| Number of epoch         | 10               |
+| Optimizer               | RMSPropOptimizer |
+| Optimizer learning rate | 1e-4             |
 
-
-
+- Result
+face + loss + discriminator detailed prob <br />
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-2.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-3.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-4.png" width="80%" height="80%">
 
 
 
