@@ -6,7 +6,7 @@ Face Generation with Attributes.
 Normally humans do not memorize things in pixel-level. Instead, it is much easier for us to describe representations of objects in our memory. Our goal is to generate a facial image as close as a person we want to describe based on the given attributes.
 
 ## Problem Formulation
-Given the input of different attributes, we produce an output image corresponding to those facial attributes. Our dataset has about 40 attributes which includes basics like Male, Female. Facial characteristics like, arched eyebrows, high cheekbones, bags under eyes, big nose, black hair, blond hair etc and also cosmetic attributes like eyeglasses, goatee, heavy makeup, wearing hat etc. Here 1 indicates the presence of a certain feature and -1 indicates the absence as the table shown in figure 1(a). In the future, we want to be able to allow users to interactively refine the first guess by providing the improved attributes. As you can see in figure 1(b).
+Given the input of different attributes, we produce an output image corresponding to those facial attributes. Our dataset has about 40 attributes which includes basics like Male, Female. Facial characteristics like, arched eyebrows, high cheekbones, bags under eyes, big nose, black hair, blond hair etc and also cosmetic attributes like eyeglasses, goatee, heavy makeup, wearing hat etc. Here 1 indicates the presence of a certain feature and 0 indicates the absence as the table shown in figure 1(a). In the future, we want to be able to allow users to interactively refine the first guess by providing the improved attributes. As you can see in figure 1(b).
 #### figure 1(a) Model for Facial Image Generation
 <img alt="face generate" src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/problem_formulation/problem_formulation_1.png" width="70%" height="70%">
 
@@ -189,6 +189,7 @@ In spite of using 32x32 image size, we also use 64x64 image size for our trainin
 #### Architecture Figure
 ##### Generator: 1 fc + 3 deconv
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-1.png" width="80%" height="80%">
+
 ##### Descriminator: 3 conv + 1 fc
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-2.png" width="80%" height="80%">
 
@@ -263,6 +264,7 @@ Now we start with interactive DCGAN. We first put `noise` as initial input, and 
 | Number of epoch         | 20                   |
 | Optimizer               | RMSPropOptimizer     |
 | Optimizer learning rate | 8e-5                 |
+| Ratio of Reconstruction loss | 0.5                 |
 
 #### Result
 ##### Generated image using face images as input
@@ -279,7 +281,7 @@ We train our model as the architecture shown above. Unfortunately, the result di
 
 ### Interactive DCGAN 2
 #### Architecture
-We put `image` as initial input image.
+Here we replace generator’s input from noise to `face image`, which might be more reasonable based on our previous experiment. So the first iteration we put image from dataset as input, and then feed generated image as input for rest of the iterations.
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-1.png" width="80%" height="80%">
 
 ##### Generator: 1 fc + 3 deconv
@@ -296,6 +298,7 @@ We put `image` as initial input image.
 | Number of epoch         | 20                   |
 | Optimizer               | RMSPropOptimizer     |
 | Optimizer learning rate | 8e-5                 |
+| Ratio of Reconstruction loss | 0.5                 |
 
 #### Result
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-3.png" width="40%" height="40%">
