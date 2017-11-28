@@ -12,10 +12,24 @@ Given the input of different attributes, we produce an output image correspondin
 CelebFaces Attributes Dataset (CelebA) [2] is a large- scale face attributes dataset with more than 200K celebrity images showed as figure 3, each with 40 attribute annotations. The images in this dataset cover large pose variations and background clutter. CelebA has large diversities, large quantities, and rich annotations, including 10,177 number of identities, 202,599 number of face images, and 5 landmark locations, 40 binary attributes annotations per image. 
 
 ### Data preprocessing - Attribute selection
-[<iframe src="https://drive.google.com/file/d/1accFe_XqPT1yJTPnZ6IvNZAU_zQ0Op5M/preview" width="640" height="480"></iframe>]
+[]
 We analyzed the 40 attributes showed as figure 4 to find the non sparse attributes, and discard the sparse ones. In order to experiment,  we picked 23 attributes as shown in the figure 5 which we feel would distinguish faces in a meaningful way, like hair colors, eyes shapes, nose etc. But for the further experiments we want to consider reducing the attributes to around 5. 
 
 ## Models
 
 ### Baseline Model - GAN with FC
 - Architecture
+In the baseline model, we use 2 layer Fully-Connected Network for both generator and discriminator as in figure 6. The input of generator is a noise vector of size 100 concatenated with the attribute vector of size 23. We used 178 × 218 × 3 flattened image (without cropping) with 23 attributes vector as the input of discriminator. The parameter setting is showed in table 1.
+
+- Result
+face + loss + discriminator detailed prob
+[]
+[]
+The generated female face image is shown in figure 7 and male image shown in figure 8. Although the face images do not look great and are blurred, we can still recognize the face is female or male with attributes given.
+
+- Training Details
+In this phase, we use 10000 to 40000 images to train our model because we consider it is a reasonable number for not overfitting and is able to get results quickly. After several tries on different number of layers and parameters, we find the limit of current architecture. The fully-connected GAN model works best around 100 epoch. Even though we increase the number of epoch to 1000, the results get worse and become to noise again. 
+
+### DCGAN
+To design the face generation DCGAN model, we reference a stable DCGAN model [3] proposed by Radford et al.  In this project, we designed five different DCGAN models to achieve the goal we set: generate faces by given attributes and interactively modify face by given image and attributes. In each subsection, we will discuss the architecture and approach we choose, what we observe from result and how we improve from current design. 
+Before we feed our raw images of human faces into our model for training, we first preprocess it through resizing the image to 32 pixels * 32 pixels in size for the consideration of training time. However, to obtain high resolution output image, we also try different size such as 64 pixels * 64 pixels.
