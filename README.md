@@ -176,9 +176,11 @@ Next, we try to use 23 attributes. We have conclusion that adding more attribute
 ### DCGAN 2 with 64 * 64 image-size
 In spite of using 32x32 image size, we also use 64x64 image size for our training. We took 50,000 images training with 10 epochs. Each epoch contains 1562 steps. The architecture and results are shown below.
 
-#### Architecture
+#### Architecture Figure
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-1.png" width="80%" height="80%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-2.png" width="80%" height="80%">
+
+#### Architecture/Hyperparameter Setup
 
 | Parameter               | Value                   |
 |-------------------------|-------------------------|
@@ -198,9 +200,11 @@ In spite of using 32x32 image size, we also use 64x64 image size for our trainin
 
 
 ### DCGAN 3
-#### Architecture
+#### Architecture Figure
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan3-1.png" width="80%" height="80%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan3-2.png" width="80%" height="80%">
+
+#### Architecture/Hyperparameter Setup
 
 | Parameter               | Value                |
 | ----------------------- | -------------------  |
@@ -220,9 +224,11 @@ In spite of using 32x32 image size, we also use 64x64 image size for our trainin
 
 
 ### Interactive DCGAN
-#### Architecture
+#### Architecture Figure
 We put `noise` as initial input image.
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-1.png" width="80%" height="80%">
+
+#### Architecture/Hyperparameter Setup
 
 | Parameter               | Value                |
 | ----------------------- | -------------------- |
@@ -270,7 +276,6 @@ We put `image` as initial input image.
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-5.png" width="40%" height="40%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-6.png" width="40%" height="40%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-7.png" width="40%" height="40%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-8.png" width="40%" height="40%">
 
 #### Training Details
 
