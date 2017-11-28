@@ -100,7 +100,7 @@ The output image doesn’t show the male attribute we give. Perhaps because ther
 #### Architecture Figure
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-1(32_32).png" width="80%" height="80%">
 
-##### Generator: 1 fc + 3 conv
+##### Generator: 1 fc + 3 deconv
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-2(32_32).png" width="80%" height="80%">
 
 ##### Descriminator: 3 conv + 1 fc
@@ -207,10 +207,11 @@ In spite of using 32x32 image size, we also use 64x64 image size for our trainin
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-6.png" width="40%" height="40%">
 
 #### Training Details
-
+The layers of architecture is same as the 32 * 32 architecture, and the results look clear and the resolution is better. However, it needed more time for training since the image size and the weight size are larger. Also, using all dataset to train 32 * 32 size image can get the clear images as well and train in less time. So we still stick to 32 * 32 for further experiments in the following parts.
 
 ### DCGAN 3
 #### Architecture Figure
+As we successfully generate reasonable face images from noise vector (size:100x1) , we change our generator input from noise vector to noise cube (size: 32x32x3). And if it works well, we can move forward to replace noise with generated images and implement interactive DCGAN.
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan3-1.png" width="80%" height="80%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan3-2.png" width="80%" height="80%">
 
@@ -230,10 +231,17 @@ In spite of using 32x32 image size, we also use 64x64 image size for our trainin
 
 #### Result
 
+| Male | Smiling |
+|------|---------|
+| 1    | 1       |
+
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan3-4.png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan3-3.png" width="40%" height="40%">
+
 #### Training Details
+We firstly change our input into noise cube with size equal to 32x32x3. Since generator need the noise information to generate output, attributes’ information cannot dominate noise information, which means we cannot append attributes as a cube like what we did in discriminator. Therefore, we append the attributes after we flatten the input noise. And after our several tries, we choose size 10x1 for each attribute.  The results are good when we test on (male, smiling) as the figure shown above. We also show some other well-performed result in the “experimental results” section.
 
-
-### Interactive DCGAN
+### Interactive DCGAN 1
 #### Architecture Figure
 We put `noise` as initial input image.
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-1.png" width="80%" height="80%">
@@ -262,10 +270,12 @@ We put `noise` as initial input image.
 #### Training Details
 
 
-### Interactive DCGAN
+### Interactive DCGAN 2
 #### Architecture
 We put `image` as initial input image.
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-1.png" width="80%" height="80%">
+
+##### Generator: 1 fc + 3 deconv
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-2.png" width="80%" height="80%">
 
 | Parameter               | Value                |
@@ -303,6 +313,9 @@ The generated images below are generated from inputs with same noise vector but 
 
 Even though this model is trained from noise input, we also tried to use image as input to see what will be generated. The below results show that the model cannot handle well when the input become images. Thus, it always produce similar faces but the attributes are correct.
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/experiments/exp_dcgan3-3.png" width="80%" height="80%">
+
+#### DCGAN model 5
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/experiments/exp_dcgan5.png" width="80%" height="80%">
 
 ### Comparison of our implemented models
 #### Image quality
