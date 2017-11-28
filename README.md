@@ -2,7 +2,7 @@
 
 Face Generation with Attributes.
 
-## Instruction
+## Introdoction
 Normally humans do not memorize things in pixel-level. Instead, it is much easier for us to describe representations of objects in our memory. Our goal is to generate a facial image as close as a person we want to describe based on the given attributes.
 
 ## Problem Formulation
@@ -27,7 +27,6 @@ We analyzed the 40 attributes showed as figure 4 to find the non sparse attribut
 In the baseline model, we use 2 layer Fully-Connected Network for both generator and discriminator as in figure 6. The input of generator is a noise vector of size 100 concatenated with the attribute vector of size 23. We used 178 × 218 × 3 flattened image (without cropping) with 23 attributes vector as the input of discriminator. The parameter setting is showed in table 1.
 
 #### Result
-face + loss + discriminator detailed prob <br />
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/fcgan1.png" width="80%" height="80%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/fcgan2.png" width="80%" height="80%">
 The generated female face image is shown in figure 7 and male image shown in figure 8. Although the face images do not look great and are blurred, we can still recognize the face is female or male with attributes given.
@@ -140,11 +139,13 @@ The output image doesn’t show the male attribute we give. Perhaps because ther
 #### Result
 ##### 2 attributes
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-5(32_32)(2attr).png" width="80%" height="80%">
+
 ##### 8 attributes
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-6(32_32)(8attr).png" width="80%" height="80%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-7(32_32).png" width="80%" height="80%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-8(32_32).png" width="80%" height="80%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-9(32_32).png" width="80%" height="80%">
+
 ##### 23 attributes
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-10(32_32)(23attr).png" width="80%" height="80%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-11(32_32)(23attr).png" width="80%" height="80%">
@@ -158,6 +159,7 @@ Second, we pick 8 attributes. Besides previous two attributes, we also pick eye-
 Next, we try to use 23 attributes. We have conclusion that adding more attributes makes our model unstable. We notice that it produces images whose attributes are not as we specified.
 
 ### DCGAN 2 with 64 * 64 image-size
+#### Architecture
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-1.png" width="80%" height="80%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-2.png" width="80%" height="80%">
 
@@ -169,6 +171,7 @@ Next, we try to use 23 attributes. We have conclusion that adding more attribute
 | Optimizer               | RMSPropOptimizer        |
 | Optimizer learning rate | 2e-4                    |
 
+#### Result
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-3.png" width="80%" height="80%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-4.png" width="80%" height="80%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-5.png" width="80%" height="80%">
@@ -198,7 +201,52 @@ Next, we try to use 23 attributes. We have conclusion that adding more attribute
 
 ### Interactive DCGAN
 #### Architecture
+We put `noise` as initial input image.
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-1.png" width="80%" height="80%">
 
+| Parameter               | Value                |
+| ----------------------- | -------------------- |
+| generator input dim     | 32 * 32 * 3 + 10 * 5 |
+| discriminator input dim | 32 * 32 * (3 + 5)    |
+| Batch size              | 32                   |
+| Noise cube size         | 32 * 32 * 3          |
+| Attribute size          | 10 * 5               |
+| Number of Images        | 20000                |
+| Number of epoch         | 20                   |
+| Optimizer               | RMSPropOptimizer     |
+| Optimizer learning rate | 8e-5                 |
+
+#### Result
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-2.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-3.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-4.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-5.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-6.png" width="80%" height="80%">
+
+#### Training Details
+
+
+### Interactive DCGAN
+#### Architecture
+We put noise as initial input image.
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-1.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-2.png" width="80%" height="80%">
+
+| Parameter               | Value                |
+| ----------------------- | -------------------- |
+| generator input dim     | 32 * 32 * 3 + 10 * 5 |
+| discriminator input dim | 32 * 32 * (3 + 5)    |
+| Batch size              | 32                   |
+| Noise cube size         | 32 * 32 * 3          |
+| Attribute size          | 10 * 5               |
+| Number of Images        | 20000                |
+| Number of epoch         | 20                   |
+| Optimizer               | RMSPropOptimizer     |
+| Optimizer learning rate | 8e-5                 |
+
+#### Result
+
+#### Training Details
 
 
 
