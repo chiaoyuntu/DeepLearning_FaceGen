@@ -21,7 +21,6 @@ CelebFaces Attributes Dataset (CelebA) [2] is a large- scale face attributes dat
 We analyzed the 40 attributes showed as figure 4 to find the non sparse attributes, and discard the sparse ones. In order to experiment,  we picked 23 attributes as shown in the figure 5 which we feel would distinguish faces in a meaningful way, like hair colors, eyes shapes, nose etc. But for the further experiments we want to consider reducing the attributes to around 5. 
 
 ## Models
-
 ### Baseline Model - GAN with FC
 #### Architecture
 In the baseline model, we use 2 layer Fully-Connected Network for both generator and discriminator as in figure 6. The input of generator is a noise vector of size 100 concatenated with the attribute vector of size 23. We used 178 × 218 × 3 flattened image (without cropping) with 23 attributes vector as the input of discriminator. The parameter setting is showed in table 1.
@@ -80,8 +79,7 @@ In this DCGAN model, the discriminator uses 3 convolution layer with leaky relu 
 | Optimizer               | RMSPropOptimizer |
 | Optimizer learning rate | 1e-4             |
 
-- Result
-face + loss + discriminator detailed prob <br />
+#### Result
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-2.png" width="50%" height="50%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-3.png" width="30%" height="30%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-4.png" width="30%" height="30%">
@@ -138,19 +136,19 @@ The output image doesn’t show the male attribute we give. Perhaps because ther
 
 #### Result
 ##### 2 attributes
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-5(32_32)(2attr).png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-5(32_32)(2attr).png" width="40%" height="40%">
 
 ##### 8 attributes
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-6(32_32)(8attr).png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-7(32_32).png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-8(32_32).png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-9(32_32).png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-6(32_32)(8attr).png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-7(32_32).png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-8(32_32).png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-9(32_32).png" width="40%" height="40%">
 
 ##### 23 attributes
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-10(32_32)(23attr).png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-11(32_32)(23attr).png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-13(32_32)(23attr).png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-12(32_32)(23attr).png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-10(32_32)(23attr).png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-11(32_32)(23attr).png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-13(32_32)(23attr).png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-12(32_32)(23attr).png" width="40%" height="40%">
 
 #### Training Details
 After we put the attributes as a cube to our discriminator, feature with male can show clearly in the output results. Then, we do experiments on our model with different numbers of attributes as our goal is to add as many attributes as possible. <br />
@@ -172,10 +170,10 @@ Next, we try to use 23 attributes. We have conclusion that adding more attribute
 | Optimizer learning rate | 2e-4                    |
 
 #### Result
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-3.png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-4.png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-5.png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-6.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-3.png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-4.png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-5.png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-6.png" width="40%" height="40%">
 
 ### DCGAN 3
 #### Architecture
@@ -217,11 +215,11 @@ We put `noise` as initial input image.
 | Optimizer learning rate | 8e-5                 |
 
 #### Result
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-2.png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-3.png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-4.png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-5.png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-6.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-2.png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-3.png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-4.png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-5.png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-6.png" width="40%" height="40%">
 
 #### Training Details
 
