@@ -7,8 +7,8 @@ Normally humans do not memorize things in pixel-level. Instead, it is much easie
 
 ## Problem Formulation
 Given the input of different attributes, we produce an output image corresponding to those facial attributes. Our dataset has about 40 attributes which includes basics like Male, Female. Facial characteristics like, arched eyebrows, high cheekbones, bags under eyes, big nose, black hair, blond hair etc and also cosmetic attributes like eyeglasses, goatee, heavy makeup, wearing hat etc. Here 1 indicates the presence of a certain feature and -1 indicates the absence as the table shown in figure 1(a). In the future, we want to be able to allow users to interactively refine the first guess by providing the improved attributes. As you can see in figure 1(b).
-<img alt="face generate" src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/problem_formulation/problem_formulation_1.png">
-<img alt="face refine" src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/problem_formulation/problem_formulation_2.png">
+<img alt="face generate" src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/problem_formulation/problem_formulation_1.png" width="70%" height="70%">
+<img alt="face refine" src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/problem_formulation/problem_formulation_2.png" width="70%" height="70%">
 
 ## Dataset
 CelebFaces Attributes Dataset (CelebA) [2] is a large- scale face attributes dataset with more than 200K celebrity images showed as figure 3, each with 40 attribute annotations. The images in this dataset cover large pose variations and background clutter. CelebA has large diversities, large quantities, and rich annotations, including 10,177 number of identities, 202,599 number of face images, and 5 landmark locations, 40 binary attributes annotations per image. 
@@ -44,3 +44,25 @@ Before we feed our raw images of human faces into our model for training, we fir
 ```
 D_loss = D_fake + D_real + D_mistach
 ```
+Compared to the DCGAN model [3] proposed by Radford et al. For the discriminator optimization problem, we add a mismatch loss which calculate the loss for giving a real image with a wrong attributes to train the discriminator can map image with corresponding described attribute.
+- Recon_loss: collect all the n pairs of a current image its refined image
+
+- DCGAN model 1, 2, 3:
+```
+G_loss = cross_entropy(D_fake, ones)
+```
+
+- DCGAN model 4, 5:
+```
+G_loss = cross_entropy(D_fake, ones) + Recon_loss
+```
+Compared to the DCGAN model [3] proposed by Radford et al. For the generator optimization problem, besides the cross entropy loss passing from the discriminator, we also add a reconstruction loss between input image and generated image for model 4,5 in order to interactively refine the attributes based on input images. <br />
+Next, we will going to introduce our five face generation DCGAN model. In each model, we will illustrate the architecture, hyperparameter settings, loss curves with respect to generators and discriminators, output values of discriminators, generated images.
+
+#### DCGAN 1 
+
+
+
+
+
+
