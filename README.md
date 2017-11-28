@@ -80,6 +80,12 @@ In this DCGAN model, the discriminator uses 3 convolution layer with leaky relu 
 | Optimizer               | RMSPropOptimizer |
 | Optimizer learning rate | 1e-4             |
 
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
 - Result
 face + loss + discriminator detailed prob <br />
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-2.png" width="50%" height="50%">
