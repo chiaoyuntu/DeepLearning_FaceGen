@@ -66,8 +66,9 @@ Next, we will going to introduce our five face generation DCGAN model. In each m
 In this DCGAN model, the discriminator uses 3 convolution layer with leaky relu activation and finally a fully connected layer. The generator is almost the exact opposite. Moreover, the attributes are given to the discriminator at the last fully connected layer.
 #### Architecture
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-1.png" width="80%" height="80%">
+
 | Parameter               | Value            |
-| ----------------------- | ---------------- |
+| ----------------------- | ---------------: |
 | Layers in discriminator | 3 conv + 1 fc    |
 | Layers in generator     | 1 fc + 3 deconv  |
 | generator input dim     | 100 + 1          |
@@ -81,7 +82,7 @@ In this DCGAN model, the discriminator uses 3 convolution layer with leaky relu 
 | Optimizer learning rate | 1e-4             |
 
 | Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
+| ------------- | ------------- | ----- |
 | col 3 is      | right-aligned | $1600 |
 | col 2 is      | centered      |   $12 |
 | zebra stripes | are neat      |    $1 |
