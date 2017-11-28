@@ -28,8 +28,8 @@ In the baseline model, we use 2 layer Fully-Connected Network for both generator
 
 #### Result
 face + loss + discriminator detailed prob <br />
-[]
-[]
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/fcgan1.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/fcgan2.png" width="80%" height="80%">
 The generated female face image is shown in figure 7 and male image shown in figure 8. Although the face images do not look great and are blurred, we can still recognize the face is female or male with attributes given.
 
 #### Training Details
