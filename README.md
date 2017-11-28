@@ -243,7 +243,8 @@ We firstly change our input into noise cube with size equal to 32x32x3. Since ge
 
 ### Interactive DCGAN 1
 #### Architecture Figure
-We put `noise` as initial input image.
+Now we start with interactive DCGAN. We first put `noise` as initial input, and after the first iteration, we use generated image as input. By this training procedure, we expect the generator can learn well on both producing a face image from noise and refine image based on given attributes.
+
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-1.png" width="80%" height="80%">
 
 #### Architecture/Hyperparameter Setup
@@ -271,7 +272,7 @@ We put `noise` as initial input image.
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan4-4.png" width="40%" height="40%">
 
 #### Training Details
-
+We train our model as the architecture shown above. Unfortunately, the result didn’t perform well up to our expectation, because it is quite difficult for a model to learn to generate face images from two different input distribution. Therefore, we think it is more reasonable to apply same input distribution for our model to learn. That’s why we slightly change our model as the architecture shown below.
 
 ### Interactive DCGAN 2
 #### Architecture
