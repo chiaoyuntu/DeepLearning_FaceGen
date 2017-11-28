@@ -62,13 +62,13 @@ Compared to the DCGAN model [3] proposed by Radford et al. For the generator opt
 Next, we will going to introduce our five face generation DCGAN model. In each model, we will illustrate the architecture, hyperparameter settings, loss curves with respect to generators and discriminators, output values of discriminators, generated images.
 
 ### DCGAN 1 
-(G: input noise vector + attr vector, D: input image + attr vector)  -> small attr info (compared to flattened image) in D <br />
 In this DCGAN model, the discriminator uses 3 convolution layer with leaky relu activation and finally a fully connected layer. The generator is almost the exact opposite. Moreover, the attributes are given to the discriminator at the last fully connected layer.
+
 #### Architecture
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-1.png" width="80%" height="80%">
 
 | Parameter               | Value            |
-| ----------------------- | ---------------: |
+| ----------------------- | ---------------- |
 | Layers in discriminator | 3 conv + 1 fc    |
 | Layers in generator     | 1 fc + 3 deconv  |
 | generator input dim     | 100 + 1          |
@@ -81,17 +81,124 @@ In this DCGAN model, the discriminator uses 3 convolution layer with leaky relu 
 | Optimizer               | RMSPropOptimizer |
 | Optimizer learning rate | 1e-4             |
 
-| Tables        | Are           | Cool  |
-| ------------- | ------------- | ----- |
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-
 - Result
 face + loss + discriminator detailed prob <br />
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-2.png" width="50%" height="50%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-3.png" width="50%" height="50%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-4.png" width="50%" height="50%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-3.png" width="30%" height="30%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan1-4.png" width="30%" height="30%">
+
+#### Training Details
+The output image doesn’t show the male attribute we give. Perhaps because there is a considerable disparity in the ratio of number for attribute (1) and flattened image (2048). To improve the model, we adopt the architecture shown below that the attributes are given as a cube concatenated with the generated image to discriminator.
+
+### DCGAN 2 with 32 * 32 image-size
+#### Architecture
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-1(32_32).png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-2(32_32).png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-3(32_32).png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-4(32_32).png" width="80%" height="80%">
+
+| Parameter               | Value                   |
+|-------------------------|-------------------------|
+| Layers in discriminator | 3 conv + 1 fc           |
+| Layers in generator     | 1 fc + 3 deconv         |
+| generator input dim     | 100 + attribute size    |
+| discriminator input dim | (32, 32, 3 + attr size) |
+| Batch size              | 32                      |
+| Noise vector size       | 100                     |
+| Number of Images        | 202599                  |
+
+##### 2 attributes
+
+| Parameter               | Value                   |
+|-------------------------|-------------------------|
+| Layers in discriminator | 3 conv + 1 fc           |
+| Attribute size          | 2                       |
+| Number of epoch         | 300                     |
+| Optimizer               | AdamOptimizer           |
+| Optimizer learning rate | 2e-4                    |
+
+##### 8 attributes
+
+| Parameter               | Value                   |
+|-------------------------|-------------------------|
+| Layers in discriminator | 3 conv + 1 fc           |
+| Attribute size          | 8                       |
+| Number of epoch         | 50                      |
+| Optimizer               | AdamOptimizer           |
+| Optimizer learning rate | 2e-4                    |
+
+##### 23 attributes
+
+| Parameter               | Value                   |
+|-------------------------|-------------------------|
+| Layers in discriminator | 4 conv + 1 fc           |
+| Attribute size          | 23                      |
+| Number of epoch         | 44                      |
+| Optimizer               | AdamOptimizer           |
+| Optimizer learning rate | 2e-4                    |
+
+#### Result
+##### 2 attributes
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-5(32_32)(2attr).png" width="80%" height="80%">
+##### 8 attributes
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-6(32_32)(8attr).png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-7(32_32).png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-8(32_32).png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-9(32_32).png" width="80%" height="80%">
+##### 23 attributes
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-10(32_32)(23attr).png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-11(32_32)(23attr).png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-13(32_32)(23attr).png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-12(32_32)(23attr).png" width="80%" height="80%">
+
+#### Training Details
+After we put the attributes as a cube to our discriminator, feature with male can show clearly in the output results. Then, we do experiments on our model with different numbers of attributes as our goal is to add as many attributes as possible. <br />
+First, we train with two attributes, male and smiling, for hundreds of epoch. The results are good when we test on (male, smiling) as (0, 0), (1, 0), (0, 1), (1, 1) where 0 means no, 1 means yes. <br />
+Second, we pick 8 attributes. Besides previous two attributes, we also pick eye-glasses, hair color, etc. We could see the eye-glasses and selected hair color in our pictures prominently. <br />
+Next, we try to use 23 attributes. We have conclusion that adding more attributes makes our model unstable. We notice that it produces images whose attributes are not as we specified.
+
+### DCGAN 2 with 64 * 64 image-size
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-1.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-2.png" width="80%" height="80%">
+
+| Parameter               | Value                   |
+|-------------------------|-------------------------|
+| Number of Images        | 50000                   |
+| Attribute size          | 5                       |
+| Number of epoch         | 10                      |
+| Optimizer               | RMSPropOptimizer        |
+| Optimizer learning rate | 2e-4                    |
+
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-3.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-4.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-5.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-6.png" width="80%" height="80%">
+
+### DCGAN 3
+#### Architecture
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan3-1.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan3-2.png" width="80%" height="80%">
+
+| Parameter               | Value                |
+| ----------------------- | -------------------  |
+| generator input dim     | 32 * 32 * 3 + 10 * 5 |
+| discriminator input dim | 32 * 32 * (3 + 5)    |
+| Batch size              | 32                   |
+| Noise cube size         | 32 * 32 * 3          |
+| Attribute size          | 10 * 5               |
+| Number of Images        | 15000                |
+| Number of epoch         | 20                   |
+| Optimizer               | RMSPropOptimizer     |
+| Optimizer learning rate | 8e-5                 |
+
+#### Result
+
+#### Training Details
+
+
+### Interactive DCGAN
+#### Architecture
+
 
 
 
