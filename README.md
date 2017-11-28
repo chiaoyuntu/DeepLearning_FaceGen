@@ -187,7 +187,9 @@ Next, we try to use 23 attributes. We have conclusion that adding more attribute
 In spite of using 32x32 image size, we also use 64x64 image size for our training. We took 50,000 images training with 10 epochs. Each epoch contains 1562 steps. The architecture and results are shown below.
 
 #### Architecture Figure
+##### Generator: 1 fc + 3 deconv
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-1.png" width="80%" height="80%">
+##### Descriminator: 3 conv + 1 fc
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-2.png" width="80%" height="80%">
 
 #### Architecture/Hyperparameter Setup
@@ -213,6 +215,7 @@ The layers of architecture is same as the 32 * 32 architecture, and the results 
 #### Architecture Figure
 As we successfully generate reasonable face images from noise vector (size:100x1) , we change our generator input from noise vector to noise cube (size: 32x32x3). And if it works well, we can move forward to replace noise with generated images and implement interactive DCGAN.
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan3-1.png" width="80%" height="80%">
+##### Generator: noise as cube
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan3-2.png" width="80%" height="80%">
 
 #### Architecture/Hyperparameter Setup
@@ -334,3 +337,10 @@ We observed that though the basic DC GAN could produce relatively clearer images
 - Learning rate: Too large values do not produce good 
 
 ## Conclusion
+Initial guess generation can be done well with the help of DCGAN. Although not all attributes are represented with the same accuracy, we can see that attributes which have sufficient data perform reasonably well.  <br />
+Refining of the initial guess can be carried out by giving the output of the GAN as the input to the generator recursively which helps it improve to change the attributes of the input images.
+
+## Reference
+- Ian Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, and Yoshua Bengio. Generative adversarial nets. In Advances in neural information processing systems, pages 2672–2680, 2014. 
+- ZiweiLiu,PingLuo,XiaogangWang,andXiaoouTang. Deeplearning face attributes in the wild. In Proceedings of International Conference on Computer Vision (ICCV), December 2015. 
+- Alec Radford, Luke Metz, and Soumith Chintala. Unsupervised representation learning with deep convolutional generative adversarial networks. arXiv preprint arXiv:1511.06434, 2015.
