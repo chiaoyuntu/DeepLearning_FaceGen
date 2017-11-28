@@ -324,7 +324,7 @@ The generated images below are generated from inputs with same noise vector but 
 Even though this model is trained from noise input, we also tried to use image as input to see what will be generated. The below results show that the model cannot handle well when the input become images. Thus, it always produce similar faces but the attributes are correct.
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/experiments/exp_dcgan3-3.png" width="80%" height="80%">
 
-#### DCGAN model 5
+#### Interavtive DCGAN model 2
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/experiments/exp_dcgan5.png" width="80%" height="80%">
 
 ### Comparison of our implemented models
