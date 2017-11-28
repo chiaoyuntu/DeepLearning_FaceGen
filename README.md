@@ -228,7 +228,7 @@ We put `noise` as initial input image.
 
 ### Interactive DCGAN
 #### Architecture
-We put noise as initial input image.
+We put `image` as initial input image.
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-1.png" width="80%" height="80%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-2.png" width="80%" height="80%">
 
@@ -245,8 +245,34 @@ We put noise as initial input image.
 | Optimizer learning rate | 8e-5                 |
 
 #### Result
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-3.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-4.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-5.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-6.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-7.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-8.png" width="80%" height="80%">
 
 #### Training Details
 
+## Experiment Results and Comparisons
+In this section, we present our evaluation results for the above five models, mainly focusing on their compared quality of output images as well as their realism to human face, the stability of output image and the learning speed of model. The dataset we used for validation and testing is CelebA dataset, and sample outputs are presented in the following subsections.
+### Comparison of applying attributes
+#### DCGAN model 2 with 8 attributes
 
+#### DCGAN model 3
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/experiments/exp_dcgan3-1.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/experiments/exp_dcgan3-2.png" width="80%" height="80%">
 
+### Comparison of our implemented models
+#### Image quality
+The base model started off on a positive note but the images had a lot of noise in them and would turn in random noise at higher epochs. Since the fully connected model could not eliminate noise we used the DC GAN model.  The DC GAN is more powerful model hence removes the noise.
+
+#### Feature showing
+We observed that though the basic DC GAN could produce relatively clearer images, the attributes were not stable. When we specify ‘male’ as one of the attributes we found that it sometimes incorrectly produces female faces too, we suspect that this is because of the fact that in DC-GAN-1 the ratio of the noise to attributes is too big, and therefore the attributes don’t seem to have much say on the resultant image. Therefore we try to give attributes also as a cube. This produces better results. Also we see that some attributes work well whereas some don’t. We think, this could be due to the fact that not all attributes are present in the same proportion in our dataset. Prominent attributes like, smile, gender, glasses etc perform well.
+
+#### Stability
+- Amount of data: We have observed that even though we keep the output image size same(32 X 32 X3) we can achieve results which seem to look like a higher resolution (clearer images), if we use a large dataset (200,000 images)
+- Size of attributes: Appending attributes along with input image cannot represent enough information of attributes. Hence in this case using cube of attributes gives better results
+- Learning rate: Too large values do not produce good 
+
+## Conclusion
