@@ -153,9 +153,19 @@ The output image doesn’t show the male attribute we give. Perhaps because ther
 
 #### Result
 ##### 2 attributes
+
+| Male | Smiling |
+|------|---------|
+| 1    | 1       |
+
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-5(32_32)(2attr).png" width="40%" height="40%">
 
 ##### 8 attributes
+
+| Male | Smiling | Black_Hair | Blond_Hair | Eyeglasses | No_Beard | Wearing_Hat | Young |
+|------|---------|------------|------------|------------|----------|-------------|-------|
+| 1    | 1       | 1          | 0          | 1          | 0        | 0           | 1     |
+
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-6(32_32)(8attr).png" width="40%" height="40%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-7(32_32).png" width="40%" height="40%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-8(32_32).png" width="40%" height="40%">
