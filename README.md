@@ -285,7 +285,7 @@ We put `image` as initial input image.
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-4.png" width="40%" height="40%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-5.png" width="40%" height="40%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-6.png" width="40%" height="40%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-7.png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-7.png" width="60%" height="60%">
 
 #### Training Details
 
@@ -294,12 +294,12 @@ We put `image` as initial input image.
 In this section, we present our evaluation results for the above five models, mainly focusing on their compared quality of output images as well as their realism to human face, the stability of output image and the learning speed of model. The dataset we used for validation and testing is CelebA dataset, and sample outputs are presented in the following subsections.
 ### Comparison of applying attributes
 #### DCGAN model 2 with 8 attributes
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/experiments/exp_dcgan2.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/experiments/exp_dcgan2.png" width="60%" height="60%">
 
 #### DCGAN model 3
 The generated images below are generated from inputs with same noise vector but different attributes. As we can see, the left figure and the right figure look similar, but they represent quite different attributes as a result.
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/experiments/exp_dcgan3-1.png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/experiments/exp_dcgan3-2.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/experiments/exp_dcgan3-1.png" width="70%" height="70%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/experiments/exp_dcgan3-2.png" width="70%" height="70%">
 
 Even though this model is trained from noise input, we also tried to use image as input to see what will be generated. The below results show that the model cannot handle well when the input become images. Thus, it always produce similar faces but the attributes are correct.
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/experiments/exp_dcgan3-3.png" width="80%" height="80%">
