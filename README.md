@@ -308,7 +308,7 @@ Here we replace generator’s input from noise to `face image`, which might be m
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-7.png" width="60%" height="80%">
 
 #### Training Details
-
+In this model we train 20 epochs with 200,000 images, which took more than a day to train. However, the results went worse after 10 epochs. So we pick the results at 5th epoch as the figure shown above. Even though the output images didn’t look clear, it still contain the features of input image because we have consider reconstruction loss in this model. Also the generated outputs’ attributes are (black hair, male, smiling), and it is shown that the output images have the corresponding attribute. (ie: someone bald has some black hair in the output) There are several results further discussed in the “experimental results” section.
 
 ## Experiment Results and Comparisons
 In this section, we present our evaluation results for the above five models, mainly focusing on their compared quality of output images as well as their realism to human face, the stability of output image and the learning speed of model. The dataset we used for validation and testing is CelebA dataset, and sample outputs are presented in the following subsections.
