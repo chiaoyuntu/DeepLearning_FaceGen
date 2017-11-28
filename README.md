@@ -12,7 +12,8 @@ Given the input of different attributes, we produce an output image correspondin
 CelebFaces Attributes Dataset (CelebA) [2] is a large- scale face attributes dataset with more than 200K celebrity images showed as figure 3, each with 40 attribute annotations. The images in this dataset cover large pose variations and background clutter. CelebA has large diversities, large quantities, and rich annotations, including 10,177 number of identities, 202,599 number of face images, and 5 landmark locations, 40 binary attributes annotations per image. 
 
 ### Data preprocessing - Attribute selection
-[<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/dataset/all_attr.png">]
+![All Attributes](https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/dataset/all_attr.png)
+![23 selected Attributes](https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/dataset/23_attr.png)
 We analyzed the 40 attributes showed as figure 4 to find the non sparse attributes, and discard the sparse ones. In order to experiment,  we picked 23 attributes as shown in the figure 5 which we feel would distinguish faces in a meaningful way, like hair colors, eyes shapes, nose etc. But for the further experiments we want to consider reducing the attributes to around 5. 
 
 ## Models
