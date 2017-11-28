@@ -243,12 +243,12 @@ We put `image` as initial input image.
 | Optimizer learning rate | 8e-5                 |
 
 #### Result
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-3.png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-4.png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-5.png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-6.png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-7.png" width="80%" height="80%">
-<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-8.png" width="80%" height="80%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-3.png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-4.png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-5.png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-6.png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-7.png" width="40%" height="40%">
+<img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-8.png" width="40%" height="40%">
 
 #### Training Details
 
