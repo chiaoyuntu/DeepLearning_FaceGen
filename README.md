@@ -7,15 +7,15 @@ Normally humans do not memorize things in pixel-level. Instead, it is much easie
 
 ## Problem Formulation
 Given the input of different attributes, we produce an output image corresponding to those facial attributes. Our dataset has about 40 attributes which includes basics like Male, Female. Facial characteristics like, arched eyebrows, high cheekbones, bags under eyes, big nose, black hair, blond hair etc and also cosmetic attributes like eyeglasses, goatee, heavy makeup, wearing hat etc. Here 1 indicates the presence of a certain feature and -1 indicates the absence as the table shown in figure 1(a). In the future, we want to be able to allow users to interactively refine the first guess by providing the improved attributes. As you can see in figure 1(b).
-<img alt="face generate" src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/problem_formulation/problem_formulation_1.png" width="600px" height="400px">
-<img alt="face refine" src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/problem_formulation/problem_formulation_2.png" width="600px" height="400px">
+<img alt="face generate" src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/problem_formulation/problem_formulation_1.png">
+<img alt="face refine" src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/problem_formulation/problem_formulation_2.png">
 
 ## Dataset
 CelebFaces Attributes Dataset (CelebA) [2] is a large- scale face attributes dataset with more than 200K celebrity images showed as figure 3, each with 40 attribute annotations. The images in this dataset cover large pose variations and background clutter. CelebA has large diversities, large quantities, and rich annotations, including 10,177 number of identities, 202,599 number of face images, and 5 landmark locations, 40 binary attributes annotations per image. 
 
 ### Data preprocessing - Attribute selection
-<img alt="All Attributes" src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/dataset/all_attr.png" width="1000px" height="550px">
-<img alt="23 Selected Attributes" src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/dataset/23_attr.png" width="1000px" height="550px">
+<img alt="All Attributes" src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/dataset/all_attr.png" width="80%" height="80%">
+<img alt="23 Selected Attributes" src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/dataset/23_attr.png" width="80%" height="80%">
 We analyzed the 40 attributes showed as figure 4 to find the non sparse attributes, and discard the sparse ones. In order to experiment,  we picked 23 attributes as shown in the figure 5 which we feel would distinguish faces in a meaningful way, like hair colors, eyes shapes, nose etc. But for the further experiments we want to consider reducing the attributes to around 5. 
 
 ## Models
@@ -42,5 +42,5 @@ Before we feed our raw images of human faces into our model for training, we fir
 - D_real: a real face with its attr
 - D_mistach; a real face with a wrong attr
 ```
-	D_loss = D_fake + D_real + D_mistach
+D_loss = D_fake + D_real + D_mistach
 ```
