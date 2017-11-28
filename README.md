@@ -100,13 +100,13 @@ The output image doesn’t show the male attribute we give. Perhaps because ther
 #### Architecture Figure
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-1(32_32).png" width="80%" height="80%">
 
-##### Generator
+##### Generator: 1 fc + 3 conv
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-2(32_32).png" width="80%" height="80%">
 
-##### Descriminator with 3 conv layers
+##### Descriminator: 3 conv + 1 fc
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-4(32_32).png" width="80%" height="80%">
 
-##### Descriminator with 4 conv layers
+##### Descriminator: 4 conv + 1 fc (when using 23 attributes)
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-3(32_32).png" width="80%" height="80%">
 
 #### Architecture/Hyperparameter Setup
@@ -174,6 +174,8 @@ Second, we pick 8 attributes. Besides previous two attributes, we also pick eye-
 Next, we try to use 23 attributes. We have conclusion that adding more attributes makes our model unstable. We notice that it produces images whose attributes are not as we specified.
 
 ### DCGAN 2 with 64 * 64 image-size
+In spite of using 32x32 image size, we also use 64x64 image size for our training. We took 50,000 images training with 10 epochs. Each epoch contains 1562 steps. The architecture and results are shown below.
+
 #### Architecture
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-1.png" width="80%" height="80%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-2.png" width="80%" height="80%">
@@ -191,6 +193,9 @@ Next, we try to use 23 attributes. We have conclusion that adding more attribute
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-4.png" width="40%" height="40%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-5.png" width="40%" height="40%">
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-6.png" width="40%" height="40%">
+
+#### Training Details
+
 
 ### DCGAN 3
 #### Architecture
