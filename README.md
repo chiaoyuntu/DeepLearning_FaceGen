@@ -103,10 +103,10 @@ The output image doesn’t show the male attribute we give. Perhaps because ther
 ##### Generator: 1 fc + 3 deconv
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-2(32_32).png" width="80%" height="80%">
 
-##### Descriminator: 3 conv + 1 fc
+##### Discriminator: 3 conv + 1 fc
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-4(32_32).png" width="80%" height="80%">
 
-##### Descriminator: 4 conv + 1 fc (when using 23 attributes)
+##### Discriminator: 4 conv + 1 fc (when using 23 attributes)
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2-3(32_32).png" width="80%" height="80%">
 
 #### Architecture/Hyperparameter Setup
@@ -190,7 +190,7 @@ In spite of using 32x32 image size, we also use 64x64 image size for our trainin
 ##### Generator: 1 fc + 3 deconv
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-1.png" width="80%" height="80%">
 
-##### Descriminator: 3 conv + 1 fc
+##### Discriminator: 3 conv + 1 fc
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan2(64_64)-2.png" width="80%" height="80%">
 
 #### Architecture/Hyperparameter Setup
@@ -281,7 +281,7 @@ We train our model as the architecture shown above. Unfortunately, the result di
 
 ### Interactive DCGAN 2
 #### Architecture
-Here we replace generator’s input from noise to `face image`, which might be more reasonable based on our previous experiment. So the first iteration we put image from dataset as input, and then feed generated image as input for rest of the iterations.
+Here we replace generator’s input from noise to `face image`, which might be more reasonable based on our previous experiment. So the first iteration we put image from dataset as input, and then feed generated image as input for rest of the iterations.<br />
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/model/dcgan5-1.png" width="80%" height="80%">
 
 ##### Generator: 1 fc + 3 deconv
@@ -325,6 +325,7 @@ Even though this model is trained from noise input, we also tried to use image a
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/experiments/exp_dcgan3-3.png" width="80%" height="80%">
 
 #### Interavtive DCGAN model 2
+As the description in Interactive DCGAN model 1, it is unable to learn to generate reasonable face images from two different input distribution. We modified our model in the generator's input. As the results shown below, we use 64 original images as input and tried to refine them with different attributes. We can observe that the hair color did change by changing different attributes. Also, the facial expression looks more like male if male attribute is applied, and vise versa. Moreover, due to the reconstuction loss, the output images still preserve some of the information from the original input image.<br />
 <img src="https://github.com/chiaoyuntu/DeepLearning_FaceGen/blob/master/figures/experiments/exp_dcgan5.png" width="80%" height="80%">
 
 ### Comparison of our implemented models
